@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,13 +20,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         btn1 = findViewById(R.id.button_one);
         btn2 = findViewById(R.id.button_two);
         btn3 = findViewById(R.id.button_three);
-
-        btn1.setOnClickListener((View.OnClickListener) this);
-        btn2.setOnClickListener((View.OnClickListener) this);
-        btn3.setOnClickListener((View.OnClickListener) this);
     }
 
     // @Override
@@ -41,20 +39,25 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     public void launchSecondActivity(View view) {
         onClick(view);
+        String message = "";
         if(mMessageButton == btn1) {
             Log.d(LOG_TAG, "Button One clicked!");
+            message = getResources().getString(R.string.button_one_text);
         }
         else if(mMessageButton == btn2) {
             Log.d(LOG_TAG, "Button Two clicked!");
+            message = getResources().getString(R.string.button_two_text);
         }
         else if(mMessageButton == btn3) {
             Log.d(LOG_TAG, "Button Three clicked!");
+            message = getResources().getString(R.string.button_three_text);
         }
+
         Intent intent = new Intent(this, SecondActivity.class);
-        startActivity(intent);
-        String message = mMessageButton.getText().toString();
         intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
     }
 }
