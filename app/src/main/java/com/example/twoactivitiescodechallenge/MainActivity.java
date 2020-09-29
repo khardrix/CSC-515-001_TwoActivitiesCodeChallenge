@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         btn3 = findViewById(R.id.button_three);
     }
 
-    // @Override
+
     public void onClick(View view) {
         if(view == btn1){
             mMessageButton = btn1;
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     public void launchSecondActivity(View view) {
         onClick(view);
         String message = "";
+
         if(mMessageButton == btn1) {
             Log.d(LOG_TAG, "Button One clicked!");
             message = getResources().getString(R.string.button_one_text);
